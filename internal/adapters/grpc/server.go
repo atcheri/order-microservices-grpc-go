@@ -7,6 +7,7 @@ import (
 
 	"github.com/atcheri/order-microservices-grpc-go/config"
 	"github.com/atcheri/order-microservices-grpc-go/internal/ports"
+	"github.com/atcheri/order-microservices-grpc-proto/golang/order"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 )
@@ -14,7 +15,7 @@ import (
 type Adapter struct {
 	api  ports.APIPort
 	port int
-	// order.UnimplementedOrderServer
+	order.UnimplementedOrderServer
 }
 
 func NewAdapter(api ports.APIPort, port int) *Adapter {
@@ -34,7 +35,7 @@ func (a Adapter) Run() {
 	}
 
 	grpcServer := grpc.NewServer()
-	// order.RegisterOrderServer(grpcServer, a)
+	order.RegisterOrderServer(grpcServer, a)
 
 	if config.GetEnv() == "development" {
 		reflection.Register(grpcServer)
