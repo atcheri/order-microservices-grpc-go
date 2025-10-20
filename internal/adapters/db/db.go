@@ -3,7 +3,7 @@ package db
 import (
 	"fmt"
 
-	"github.com/atch/order-microservices-grpc-go/internal/application/domain"
+	"github.com/atcheri/order-microservices-grpc-go/internal/application/domain"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )

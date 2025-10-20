@@ -1,8 +1,8 @@
 package api
 
 import (
-	"github.com/atch/order-microservices-grpc-go/internal/application/domain"
-	"github.com/atch/order-microservices-grpc-go/internal/ports"
+	"github.com/atcheri/order-microservices-grpc-go/internal/application/domain"
+	"github.com/atcheri/order-microservices-grpc-go/internal/ports"
 )
 
 type Application struct {

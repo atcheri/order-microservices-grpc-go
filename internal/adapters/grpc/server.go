@@ -5,8 +5,8 @@ import (
 	"log"
 	"net"
 
-	"github.com/atch/order-microservices-grpc-go/config"
-	"github.com/atch/order-microservices-grpc-go/internal/ports"
+	"github.com/atcheri/order-microservices-grpc-go/config"
+	"github.com/atcheri/order-microservices-grpc-go/internal/ports"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 )

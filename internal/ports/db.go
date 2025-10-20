@@ -1,6 +1,6 @@
 package ports
 
-import "github.com/atch/order-microservices-grpc-go/internal/application/domain"
+import "github.com/atcheri/order-microservices-grpc-go/internal/application/domain"
 
 type DBPort interface {
 	Get(id string) (domain.Order, error)

@@ -1,4 +1,4 @@
-module github.com/atch/order-microservices-grpc-go
+module github.com/atcheri/order-microservices-grpc-go
 
 go 1.25.2
 
