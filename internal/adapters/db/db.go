@@ -68,3 +68,28 @@ func (a Adapter) Get(id string) (domain.Order, error) {
 	return order, nil
 
 }
+
+func (a Adapter) Save(order *domain.Order) error {
+	var orderItems []OrderItem
+
+	for _, orderItem := range order.OrderItems {
+		orderItems = append(orderItems, OrderItem{
+			ProductCode: orderItem.ProductCode,
+			UnitPrice:   orderItem.UnitPrice,
+			Quantity:    orderItem.Quantity,
+		})
+	}
+
+	orderModel := Order{
+		CustomerID: order.CustomerID,
+		Status:     order.Status,
+		OrderItems: orderItems,
+	}
+	res := a.db.Create(&orderModel)
+
+	if res.Error == nil {
+		order.ID = int64(orderModel.ID)
+	}
+
+	return res.Error
+}
