@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"github.com/atcheri/order-microservices-grpc-go/internal/application/domain"
+	"github.com/atcheri/order-microservices-grpc-proto/golang/order"
 )
 
 func (a Adapter) Create(ctx context.Context, request *order.CreateOrderRequest) (*order.CreateOrderResponse, error) {
@@ -17,7 +18,7 @@ func (a Adapter) Create(ctx context.Context, request *order.CreateOrderRequest) 
 		}
 	}
 
-	newOrder := domain.NewOrder(request.UserID, orderItems)
+	newOrder := domain.NewOrder(request.UserId, orderItems)
 	result, err := a.api.PlaceOrder(newOrder)
 
 	if err != nil {
@@ -25,6 +26,6 @@ func (a Adapter) Create(ctx context.Context, request *order.CreateOrderRequest) 
 	}
 
 	return &order.CreateOrderResponse{
-		OrderID: result.ID,
-	}
+		OrderId: result.ID,
+	}, err
 }
